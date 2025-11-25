@@ -1,0 +1,142 @@
+2023-11-26 10:00:00.123 | INFO | api-gateway | Request ID: 9f8a3d | Incoming GET request for /api/v1/users/456 from 192.168.1.101
+2023-11-26 10:00:00.201 | DEBUG | auth-service | Token 'eyJhb...' validated successfully for user_id: 456
+2023-11-26 10:00:00.355 | INFO | user-service | Fetching user profile for ID 456
+2023-11-26 10:00:00.412 | DEBUG | db-connector | SQL: SELECT name, email FROM users WHERE id = 456
+2023-11-26 10:00:00.509 | INFO | api-gateway | Request ID: 9f8a3d | Response 200 OK sent in 386ms
+2023-11-26 10:00:00.678 | INFO | email-worker | Worker starting batch job for newsletters
+2023-11-26 10:00:00.890 | INFO | api-gateway | Request ID: a1b2c3 | Incoming POST request for /api/v1/products/create
+2023-11-26 10:00:01.050 | DEBUG | product-service | Attempting to validate product data: {"name": "Widget A", "price": 19.99}
+2023-11-26 10:00:01.120 | WARN | db-connector | Slow query detected (400ms): INSERT INTO products...
+2023-11-26 10:00:01.205 | INFO | product-service | Product 'Widget A' created with ID 1001
+2023-11-26 10:00:01.300 | INFO | api-gateway | Request ID: a1b2c3 | Response 201 Created sent in 410ms
+2023-11-26 10:00:01.450 | ERROR | user-service | Failed to connect to external license API: Connection refused
+2023-11-26 10:00:01.551 | INFO | inventory-sync | Sync job started. Source: SAP, Destination: Internal DB
+2023-11-26 10:00:01.690 | DEBUG | inventory-sync | Processing item 55 of 1024. SKU: XQ-332
+2023-11-26 10:00:01.880 | INFO | api-gateway | Request ID: d4e5f6 | Incoming GET request for /api/v1/metrics
+2023-11-26 10:00:02.001 | DEBUG | metrics-service | Calculating latency percentile p95
+2023-11-26 10:00:02.150 | INFO | api-gateway | Request ID: d4e5f6 | Response 200 OK sent in 270ms
+2023-11-26 10:00:02.222 | INFO | email-worker | Newsletter sent to 500 recipients. Status: Success
+2023-11-26 10:00:02.390 | ERROR | product-service | Validation failed for product ID 1002: Price must be positive. Payload: {"name": "Broken Item", "price": -5.00}
+2023-11-26 10:00:02.499 | DEBUG | cache-manager | Cache miss for key: user_settings_789. Loading from DB.
+2023-11-26 10:00:02.600 | INFO | api-gateway | Request ID: g7h8i9 | Incoming DELETE request for /api/v1/orders/1234
+2023-11-26 10:00:02.801 | DEBUG | order-service | Checking order status for cancellation: 1234
+2023-11-26 10:00:02.950 | WARN | order-service | Order 1234 is already shipped. Cancellation denied.
+2023-11-26 10:00:03.050 | INFO | api-gateway | Request ID: g7h8i9 | Response 409 Conflict sent in 450ms
+2023-11-26 10:00:03.111 | INFO | email-worker | Worker job finished. Total runtime: 2.433s
+2023-11-26 10:00:03.340 | DEBUG | db-connector | SQL: UPDATE user_settings SET theme = 'dark' WHERE user_id = 789
+2023-11-26 10:00:03.400 | INFO | user-service | User settings updated for ID 789
+2023-11-26 10:00:03.550 | INFO | api-gateway | Request ID: j0k1l2 | Incoming GET request for /api/v1/config/server_status
+2023-11-26 10:00:03.650 | DEBUG | config-service | Loading configuration from environment variables.
+2023-11-26 10:00:03.780 | INFO | api-gateway | Request ID: j0k1l2 | Response 200 OK sent in 230ms
+2023-11-26 10:00:03.900 | INFO | inventory-sync | Processed 100 items successfully. Progress: 10%
+2023-11-26 10:00:04.100 | ERROR | auth-service | Invalid credentials attempt for user: 'attacker@mail.com'. IP: 10.0.0.5
+2023-11-26 10:00:04.250 | INFO | auth-service | Rate limit exceeded for IP 10.0.0.5. Blocking for 60 seconds.
+2023-11-26 10:00:04.400 | DEBUG | cache-manager | Stored key: 'product_details_1001' with TTL 300s.
+2023-11-26 10:00:04.550 | INFO | api-gateway | Request ID: m3n4o5 | Incoming GET request for /api/v1/feed
+2023-11-26 10:00:04.700 | DEBUG | feed-service | Calculating personalized feed for user 112
+2023-11-26 10:00:04.850 | WARN | feed-service | User 112 has too few interactions. Using default trending items.
+2023-11-26 10:00:04.990 | INFO | api-gateway | Request ID: m3n4o5 | Response 200 OK sent in 440ms
+2023-11-26 10:00:05.100 | INFO | health-check | Service 'user-service' status: UP
+2023-11-26 10:00:05.250 | INFO | health-check | Service 'db-connector' status: UP
+2023-11-26 10:00:05.400 | DEBUG | db-connector | SQL: DELETE FROM temp_sessions WHERE expiry < '2023-11-26 09:00:00'
+2023-11-26 10:00:05.550 | INFO | session-cleanup | 15 old sessions purged.
+2023-11-26 10:00:05.700 | INFO | api-gateway | Request ID: p6q7r8 | Incoming PUT request for /api/v1/profile/update
+2023-11-26 10:00:05.850 | DEBUG | user-service | Starting profile update for user 888
+2023-11-26 10:00:05.990 | WARN | user-service | New username 'Test User!' contains invalid characters. Sanitizing to 'TestUser'.
+2023-11-26 10:00:06.100 | INFO | user-service | Profile update complete for user 888
+2023-11-26 10:00:06.250 | INFO | api-gateway | Request ID: p6q7r8 | Response 200 OK sent in 550ms
+2023-11-26 10:00:06.400 | INFO | inventory-sync | Processed 200 items successfully. Progress: 20%
+2023-11-26 10:00:06.550 | ERROR | payments-service | Payment processor failure: Timeout when contacting Stripe API. Charge ID: ch_abc123
+2023-11-26 10:00:06.700 | DEBUG | payments-service | Scheduling retry for failed charge ch_abc123 in 5 minutes.
+2023-11-26 10:00:06.850 | INFO | api-gateway | Request ID: s9t0u1 | Incoming GET request for /api/v1/search?q=phone
+2023-11-26 10:00:07.000 | DEBUG | search-service | Executing fuzzy search for term 'phone'. Limit 10.
+2023-11-26 10:00:07.150 | INFO | search-service | Found 150 results. Returning top 10.
+2023-11-26 10:00:07.300 | INFO | api-gateway | Request ID: s9t0u1 | Response 200 OK sent in 450ms
+2023-11-26 10:00:07.450 | INFO | monitor-alert | Low disk space alert on 'data-store-03'. Usage: 95%
+2023-11-26 10:00:07.600 | INFO | health-check | Service 'feed-service' status: UP
+2023-11-26 10:00:07.750 | DEBUG | db-connector | SQL: INSERT INTO logs (level, message) VALUES ('WARN', 'Too many requests')
+2023-11-26 10:00:07.900 | INFO | api-gateway | Request ID: v2w3x4 | Incoming POST request for /api/v1/checkout
+2023-11-26 10:00:08.050 | DEBUG | order-service | Processing items: [1001, 1003, 1008]. Total: $140.00
+2023-11-26 10:00:08.200 | INFO | payments-service | Initiating payment for $140.00.
+2023-11-26 10:00:08.350 | INFO | payments-service | Payment successful. Transaction ID: txn_456789
+2023-11-26 10:00:08.500 | INFO | order-service | Order placed successfully. Order ID: 50001
+2023-11-26 10:00:08.650 | INFO | api-gateway | Request ID: v2w3x4 | Response 201 Created sent in 750ms
+2023-11-26 10:00:08.800 | INFO | inventory-sync | Processed 300 items successfully. Progress: 30%
+2023-11-26 10:00:08.950 | WARN | cache-manager | Exceeded size limit for in-memory cache. Evicting oldest entries.
+2023-11-26 10:00:09.100 | DEBUG | feed-service | Fetching ad banner for segment 'premium_users'
+2023-11-26 10:00:09.250 | INFO | api-gateway | Request ID: y5z6a7 | Incoming GET request for /api/v1/notifications
+2023-11-26 10:00:09.400 | DEBUG | notif-service | Fetching unread notifications for user 456
+2023-11-26 10:00:09.550 | INFO | notif-service | Found 3 unread notifications.
+2023-11-26 10:00:09.700 | INFO | api-gateway | Request ID: y5z6a7 | Response 200 OK sent in 450ms
+2023-11-26 10:00:09.850 | ERROR | auth-service | Token expiration check failed: Clock skew detected. Local time is off by 5 seconds.
+2023-11-26 10:00:10.000 | INFO | system-clock | System clock sync initiated.
+2023-11-26 10:00:10.150 | DEBUG | db-connector | SQL: SELECT * FROM settings WHERE key = 'maintenance_mode'
+2023-11-26 10:00:10.300 | INFO | config-service | Maintenance mode is currently set to OFF.
+2023-11-26 10:00:10.450 | INFO | health-check | Service 'payments-service' status: UP
+2023-11-26 10:00:10.600 | INFO | api-gateway | Request ID: b8c9d0 | Incoming GET request for /api/v1/reports/sales
+2023-11-26 10:00:10.750 | DEBUG | report-service | Generating monthly sales report for Q3
+2023-11-26 10:00:10.900 | WARN | report-service | Report generation took 1.2s (Exceeds threshold of 1.0s).
+2023-11-26 10:00:11.050 | INFO | api-gateway | Request ID: b8c9d0 | Response 200 OK sent in 450ms
+2023-11-26 10:00:11.200 | INFO | inventory-sync | Processed 400 items successfully. Progress: 40%
+2023-11-26 10:00:11.350 | INFO | email-worker | Preparing confirmation email for Order ID 50001
+2023-11-26 10:00:11.500 | DEBUG | email-worker | Sending email template 'order_confirm' to shamim@example.com
+2023-11-26 10:00:11.650 | INFO | email-worker | Confirmation email sent successfully.
+2023-11-26 10:00:11.800 | INFO | api-gateway | Request ID: e1f2g3 | Incoming GET request for /api/v1/users
+2023-11-26 10:00:11.950 | DEBUG | user-service | Paginating users: page 1, size 20.
+2023-11-26 10:00:12.100 | INFO | api-gateway | Request ID: e1f2g3 | Response 200 OK sent in 300ms
+2023-11-26 10:00:12.250 | INFO | health-check | Service 'search-service' status: UP
+2023-11-26 10:00:12.400 | DEBUG | db-connector | SQL: INSERT INTO metrics (timestamp, value) VALUES (1700970012, 45.2)
+2023-11-26 10:00:12.550 | INFO | metrics-service | Recorded new metric: response_time_p50
+2023-11-26 10:00:12.700 | ERROR | data-processor | Unhandled division by zero error during batch processing. Batch ID: 77a
+2023-11-26 10:00:12.850 | DEBUG | data-processor | Retrying batch 77a with safe division strategy.
+2023-11-26 10:00:13.000 | INFO | api-gateway | Request ID: h4i5j6 | Incoming POST request for /api/v1/comment
+2023-11-26 10:00:13.150 | DEBUG | comment-service | Validating comment text for profanity.
+2023-11-26 10:00:13.300 | WARN | comment-service | Profanity level high (7/10). Comment flagged for moderation.
+2023-11-26 10:00:13.450 | INFO | api-gateway | Request ID: h4i5j6 | Response 202 Accepted (pending moderation) sent in 450ms
+2023-11-26 10:00:13.600 | INFO | inventory-sync | Processed 500 items successfully. Progress: 50%
+2023-11-26 10:00:13.750 | ERROR | payments-service | Webhook verification failed. Signature mismatch. Source IP: 52.1.1.1
+2023-11-26 10:00:13.900 | INFO | session-cleanup | Started background task for cleaning expired JWTs.
+2023-11-26 10:00:14.050 | INFO | api-gateway | Request ID: k7l8m9 | Incoming GET request for /api/v1/dashboard/summary
+2023-11-26 10:00:14.200 | DEBUG | dashboard-service | Aggregating data from 4 distinct microservices.
+2023-11-26 10:00:14.350 | WARN | dashboard-service | Timeout accessing 'external-weather-api'. Skipping widget.
+2023-11-26 10:00:14.500 | INFO | api-gateway | Request ID: k7l8m9 | Response 200 OK sent in 450ms
+2023-11-26 10:00:14.650 | INFO | health-check | Service 'comment-service' status: UP
+2023-11-26 10:00:14.800 | DEBUG | cache-manager | Cache hit for key: user_profile_456. TTL remaining: 120s.
+2023-11-26 10:00:14.950 | ERROR | db-connector | Database pool exhaustion. Max connections reached (100/100).
+2023-11-26 10:00:15.100 | INFO | connection-pool | Queued 5 requests due to pool exhaustion.
+2023-11-26 10:00:15.250 | INFO | api-gateway | Request ID: n0p1q2 | Incoming GET request for /api/v1/feed
+2023-11-26 10:00:15.400 | DEBUG | feed-service | Calculating personalized feed for user 113
+2023-11-26 10:00:15.550 | INFO | api-gateway | Request ID: n0p1q2 | Response 200 OK sent in 300ms
+2023-11-26 10:00:15.700 | INFO | inventory-sync | Processed 600 items successfully. Progress: 60%
+2023-11-26 10:00:15.850 | INFO | health-check | Service 'report-service' status: UP
+2023-11-26 10:00:16.000 | DEBUG | db-connector | SQL: UPDATE products SET quantity = 10 WHERE id = 1001
+2023-11-26 10:00:16.150 | INFO | inventory-sync | Inventory updated for product 1001. New stock: 10
+2023-11-26 10:00:16.300 | INFO | api-gateway | Request ID: r3s4t5 | Incoming POST request for /api/v1/signup
+2023-11-26 10:00:16.450 | DEBUG | auth-service | Checking if email 'newuser@mail.co' is available.
+2023-11-26 10:00:16.600 | INFO | auth-service | New user registered successfully. User ID: 1000
+2023-11-26 10:00:16.750 | INFO | api-gateway | Request ID: r3s4t5 | Response 201 Created sent in 450ms
+2023-11-26 10:00:16.900 | ERROR | data-processor | Batch 77a failed on retry: Data inconsistency detected. Skipping.
+2023-11-26 10:00:17.050 | INFO | data-processor | Batch 77a marked as failed and recorded for manual review.
+2023-11-26 10:00:17.200 | INFO | monitor-alert | Low disk space alert on 'data-store-03' resolved. Usage: 85%
+2023-11-26 10:00:17.350 | INFO | api-gateway | Request ID: u6v7w8 | Incoming GET request for /api/v1/profile/1000
+2023-11-26 10:00:17.500 | DEBUG | user-service | Fetching user profile for ID 1000
+2023-11-26 10:00:17.650 | INFO | api-gateway | Request ID: u6v7w8 | Response 200 OK sent in 300ms
+2023-11-26 10:00:17.800 | INFO | inventory-sync | Processed 700 items successfully. Progress: 70%
+2023-11-26 10:00:17.950 | DEBUG | db-connector | SQL: SELECT count(*) FROM orders WHERE user_id = 1000
+2023-11-26 10:00:18.100 | INFO | order-service | User 1000 has 0 previous orders.
+2023-11-26 10:00:18.250 | INFO | health-check | Service 'auth-service' status: UP
+2023-11-26 10:00:18.400 | INFO | api-gateway | Request ID: x9y0z1 | Incoming GET request for /api/v1/products?category=electronics
+2023-11-26 10:00:18.550 | DEBUG | product-service | Filtering products by category 'electronics'
+2023-11-26 10:00:18.700 | INFO | product-service | Found 45 products in category 'electronics'.
+2023-11-26 10:00:18.850 | INFO | api-gateway | Request ID: x9y0z1 | Response 200 OK sent in 450ms
+2023-11-26 10:00:19.000 | INFO | email-worker | Starting daily digest email job.
+2023-11-26 10:00:19.150 | DEBUG | email-worker | Fetching list of active users (5000 total).
+2023-11-26 10:00:19.300 | WARN | auth-service | JWT token provided is malformed. Rejecting request. Token: 'invalid.token.123'
+2023-11-26 10:00:19.450 | INFO | inventory-sync | Processed 800 items successfully. Progress: 80%
+2023-11-26 10:00:19.600 | INFO | health-check | Service 'inventory-sync' status: UP
+2023-11-26 10:00:19.750 | ERROR | api-gateway | 404 Not Found for path: /api/v2/nonexistent/endpoint. Referrer: 10.0.0.10
+2023-11-26 10:00:19.900 | INFO | cache-manager | Cache eviction policy triggered. Cleared 10% of cache space.
+2023-11-26 10:00:20.050 | INFO | api-gateway | Request ID: 1a2b3c | Incoming PUT request for /api/v1/settings
+2023-11-26 10:00:20.200 | DEBUG | config-service | Updating global setting 'max_users' to 50000
+2023-11-26 10:00:20.350 | INFO | api-gateway | Request ID: 1a2b3c | Response 200 OK sent in 300ms
+2023-11-26 10:00:20.500 | INFO | email-worker | Daily digest job complete. 5000 emails queued.
